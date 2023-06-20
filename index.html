@@ -92,6 +92,7 @@
         justify-content: center;
         flex-direction: column;
         transition: 2s;
+        text-align: center;
       }
 
       .selection {
@@ -142,6 +143,20 @@
 
       .fade-in-animation {
         animation: fade-in 0.5s ease-in-out;
+      }
+
+      @media only screen and (max-width: 600px) {
+        img {
+          width: 80%;
+        }
+
+        h3 {
+          font-size: 16px;
+        }
+
+        .container {
+          width: 100%;
+        }
       }
     </style>
   </head>
