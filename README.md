@@ -1,3 +1,3 @@
-# rockpaperscissor
+# Rock, paper, scissor
 
-an epic rock, paper, scissor game created with vanilla js.
+An epic Rock, Paper, Scissor game created with vanilla js. Can you defeat the mighty machines?
