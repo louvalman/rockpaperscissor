@@ -83,15 +83,15 @@ buttons.forEach((button) => {
     if (roundResult.winner === 'player') {
       // calculate the winner by incrementing the player's or computer's score by looking at the winner variable defined in the playRound function
       playerScore++;
-      roundStatus.textContent = `For humanity! You win the round with ${playerSelection} against ${computerSelection}.`;
+      roundStatus.innerHTML = `For humanity! You win the round with <strong>${playerSelection}</strong> against <strong>${computerSelection}</strong>.`;
       roundStatus.style.color = 'lightgreen';
     } else if (roundResult.winner === 'computer') {
       computerScore++;
-      roundStatus.textContent = `Damn machines! You lost the round with ${playerSelection} against ${computerSelection}.`;
+      roundStatus.innerHTML = `Damn machines! You lost the round with <strong>${playerSelection}</strong> against <strong>${computerSelection}</strong>.`;
       roundStatus.style.color = 'lightcoral';
     } else if (roundResult.winner === null) {
       tieCounter++;
-      roundStatus.textContent = `It's a tie. Both you and the machines picked ${playerSelection}.`;
+      roundStatus.innerHTML = `It's a tie. Both you and the machines picked <strong>${playerSelection}</strong>.`;
       roundStatus.style.color = 'lightblue';
     }
 
@@ -104,8 +104,7 @@ buttons.forEach((button) => {
     playerCompScore.appendChild(roundStatus);
     roundStatus.classList.add('fade-in-animation');
 
-    playerResult.textContent = `Your score: ${playerScore} - Computer score: ${computerScore}`;
-
+    playerResult.innerHTML = `Your score: <strong>${playerScore}</strong>, Machine score: <strong>${computerScore}</strong>`;
     playerCompScore.appendChild(playerResult);
 
     // computerResult.textContent = 'Computer score: ' + computerScore;
@@ -144,7 +143,9 @@ buttons.forEach((button) => {
       (playerScore === 2 && computerScore === 0 && tieCounter === 2) || // if a 2-0 score is reached after 4 rounds
       (computerScore === 2 && playerScore === 0 && tieCounter === 2) ||
       (computerScore === 3 && playerScore === 1 && tieCounter === 0) || // if the score is 3-1 after 4 rounds
-      (playerScore === 3 && computerScore === 1 && tieCounter === 0)
+      (playerScore === 3 && computerScore === 1 && tieCounter === 0) ||
+      (playerScore === 3 && computerScore === 0 && tieCounter === 0) || // if the score is 3-0 after 3 rounds
+      (computerScore === 3 && playerScore === 0 && tieCounter === 0)
     ) {
       endGame();
     }
