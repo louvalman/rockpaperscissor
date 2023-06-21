@@ -142,7 +142,9 @@ buttons.forEach((button) => {
       (playerScore === 3 && computerScore === 0 && tieCounter === 1) || // if player/computer reaches a 3-0 score (in 4 rounds)
       (computerScore === 3 && playerScore === 0 && tieCounter === 1) ||
       (playerScore === 2 && computerScore === 0 && tieCounter === 2) || // if a 2-0 score is reached after 4 rounds
-      (computerScore === 2 && playerScore === 0 && tieCounter === 2)
+      (computerScore === 2 && playerScore === 0 && tieCounter === 2) ||
+      (computerScore === 3 && playerScore === 1 && tieCounter === 0) || // if the score is 3-1 after 4 rounds
+      (playerScore === 3 && computerScore === 1 && tieCounter === 0)
     ) {
       endGame();
     }
