@@ -34,14 +34,24 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+const removeGameText = () => {
+  gameText.classList.add('fade-out');
+  gameText.addEventListener('transitionend', () => {
+    gameTextContainer.removeChild(gameText);
+  });
+};
+
 const removeRoundCountPlaceholder = () => {
   roundContainer.removeChild(roundCountPlaceholder);
 };
 
+let gameText = document.querySelector('.gameText');
 let roundContainer = document.querySelector('.roundContainer');
 let roundCountPlaceholder = document.querySelector('.roundCountPlaceholder');
 let score = document.querySelector('.score');
 let playerCompScore = document.querySelector('.playerCompScore');
+let gameTextContainer = document.querySelector('.gameTextContainer');
+
 let playerScore = 0;
 let computerScore = 0;
 let tieCounter = 0;
@@ -60,6 +70,11 @@ buttons.forEach((button) => {
     if (roundCountPlaceholder.parentNode === roundContainer) {
       removeRoundCountPlaceholder();
     }
+
+    if (gameText.parentNode === gameTextContainer) {
+      removeGameText();
+    }
+
     const playerSelection = e.target.id;
     const computerSelection = getComputerChoice();
 
@@ -144,6 +159,9 @@ const newGame = () => {
     button.removeAttribute('disabled', '');
   });
   roundContainer.appendChild(roundCountPlaceholder);
+  gameTextContainer.appendChild(gameText);
+  gameText.classList.remove('fade-out');
+
   roundContainer.removeChild(roundCount);
   playerCompScore.removeChild(playerResult);
   // playerCompScore.removeChild(computerResult);
