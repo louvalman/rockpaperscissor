@@ -97,14 +97,14 @@ buttons.forEach((button) => {
 
     let roundScore = playerScore + computerScore + tieCounter;
 
-    roundCount.textContent = `Round ${roundScore}`;
+    roundCount.textContent = `Round ${roundScore}`; // move below buttons (and make bigger)
     roundCount.classList.add('roundNumber');
     roundContainer.append(roundCount);
 
     playerCompScore.appendChild(roundStatus);
     roundStatus.classList.add('fade-in-animation');
 
-    playerResult.innerHTML = `Your score: <strong>${playerScore}</strong><br /> Machine score: <strong>${computerScore}</strong>`;
+    playerResult.innerHTML = `Your score: <strong>${playerScore}</strong><br /> Machine score: <strong>${computerScore}</strong>`; // giver color to leading player (if playerScore > computerScore) playerScore.color = green;
     playerCompScore.appendChild(playerResult);
 
     // computerResult.textContent = 'Computer score: ' + computerScore;
