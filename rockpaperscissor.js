@@ -92,7 +92,7 @@ buttons.forEach((button) => {
     } else if (roundResult.winner === null) {
       tieCounter++;
       roundStatus.innerHTML = `It's a tie. Both you and the machines picked <strong>${playerSelection}</strong>.`;
-      roundStatus.style.color = 'lightblue';
+      roundStatus.style.color = 'cadetblue';
     }
 
     let roundScore = playerScore + computerScore + tieCounter;
@@ -107,9 +107,6 @@ buttons.forEach((button) => {
     playerResult.innerHTML = `Your score: <strong>${playerScore}</strong><br /> Machine score: <strong>${computerScore}</strong>`; // giver color to leading player (if playerScore > computerScore) playerScore.color = green;
     playerCompScore.appendChild(playerResult);
 
-    // computerResult.textContent = 'Computer score: ' + computerScore;
-    // playerCompScore.appendChild(computerResult);
-
     const endGame = () => {
       if (computerScore > playerScore) {
         gameResult.textContent =
@@ -121,7 +118,7 @@ buttons.forEach((button) => {
       } else if (playerScore === computerScore) {
         gameResult.textContent =
           "It's a tie! Not the kind you tie around your neck.";
-        gameResult.style.color = 'lightblue';
+        gameResult.style.color = 'cadetblue';
       }
 
       score.appendChild(gameResult);
@@ -167,7 +164,6 @@ const newGame = () => {
 
   roundContainer.removeChild(roundCount);
   playerCompScore.removeChild(playerResult);
-  // playerCompScore.removeChild(computerResult);
   playerCompScore.removeChild(roundStatus);
   score.removeChild(playAgain);
   score.removeChild(gameResult);
