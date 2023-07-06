@@ -1,7 +1,19 @@
+// initialize animate on scroll lib
 AOS.init();
 
+// add animation on click on image
+const img = document.getElementById('anch');
+
+img.addEventListener('click', function () {
+  img.style.animation = 'bounce 1s';
+
+  img.addEventListener('animationend', function () {
+    img.style.animation = '';
+  });
+});
+
+// defines a variable to store a random number between 1-100 that defines comp choice 33% chance for r/p/s
 let getComputerChoice = () => {
-  // defines a variable to store a random number between 1-100 that defines comp choice 33% chance for r/p/s
   let randomNumber = Math.floor(Math.random() * 100) + 1;
   if (randomNumber <= 33) {
     return 'rock';
@@ -12,6 +24,7 @@ let getComputerChoice = () => {
   }
 };
 
+// defines playRound function (core mechanics of game)
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === 'rock' && computerSelection === 'paper') {
     return { result: 'You lose! Paper beats Rock.', winner: 'computer' };
@@ -34,6 +47,7 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+// removes intro game text when game starts
 const removeGameText = () => {
   gameText.classList.add('fade-out');
   gameText.addEventListener('transitionend', () => {
@@ -45,6 +59,7 @@ const removeRoundCountPlaceholder = () => {
   roundContainer.removeChild(roundCountPlaceholder);
 };
 
+// defines game components
 let gameText = document.querySelector('.gameText');
 let roundContainer = document.querySelector('.roundContainer');
 let roundCountPlaceholder = document.querySelector('.roundCountPlaceholder');
@@ -52,6 +67,7 @@ let score = document.querySelector('.score');
 let playerCompScore = document.querySelector('.playerCompScore');
 let gameTextContainer = document.querySelector('.gameTextContainer');
 
+// init scores
 let playerScore = 0;
 let computerScore = 0;
 let tieCounter = 0;
@@ -65,8 +81,10 @@ let playAgain = document.createElement('button');
 
 const buttons = document.querySelectorAll('button');
 
+// when buttons (r/p/s) are clicked, define player selection, get computer choice and play game
 buttons.forEach((button) => {
   button.addEventListener('click', (e) => {
+    // if the round count placeholder exists in DOM, remove it (is replaced with round counter below)
     if (roundCountPlaceholder.parentNode === roundContainer) {
       removeRoundCountPlaceholder();
     }
