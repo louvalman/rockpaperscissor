@@ -129,6 +129,7 @@ buttons.forEach((button) => {
 
       score.append(playAgain);
       playAgain.textContent = 'Play again';
+      playAgain.classList.add('playAgainClass');
 
       buttons.forEach((button) => {
         button.setAttribute('disabled', '');
