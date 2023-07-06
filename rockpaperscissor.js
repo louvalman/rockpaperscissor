@@ -153,6 +153,7 @@ buttons.forEach((button) => {
       (computerScore === 3 && playerScore === 0 && tieCounter === 0)
     ) {
       endGame();
+      // scroll to bottom of page
       window.scrollTo({
         top: document.documentElement.scrollHeight,
         behavior: 'smooth',
@@ -162,6 +163,11 @@ buttons.forEach((button) => {
 });
 
 const newGame = () => {
+  // scroll to top of page
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
   // reset the scoreboard and all counters
   playerScore = 0;
   computerScore = 0;
