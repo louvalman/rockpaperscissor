@@ -163,11 +163,6 @@ buttons.forEach((button) => {
 });
 
 const newGame = () => {
-  // scroll to top of page
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
   // reset the scoreboard and all counters
   playerScore = 0;
   computerScore = 0;
@@ -186,6 +181,12 @@ const newGame = () => {
   score.removeChild(playAgain);
   score.removeChild(gameResult);
   gameResult.textContent = '';
+  
+   // scroll to top of page
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
 };
 
 playAgain.addEventListener('click', newGame);
