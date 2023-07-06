@@ -12,7 +12,7 @@ img.addEventListener('click', function () {
   });
 });
 
-// defines a variable to store a random number between 1-100 that defines comp choice 33% chance for r/p/s
+// defines a variable to store computer choice - 33% chance for r/p/s based on a random number generated between 1-100
 let getComputerChoice = () => {
   let randomNumber = Math.floor(Math.random() * 100) + 1;
   if (randomNumber <= 33) {
