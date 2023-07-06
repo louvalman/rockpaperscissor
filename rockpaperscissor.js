@@ -1,17 +1,6 @@
 // initialize animate on scroll lib
 AOS.init();
 
-// add animation on click on image
-const img = document.getElementById('anch');
-
-img.addEventListener('click', function () {
-  img.style.animation = 'bounce 1s';
-
-  img.addEventListener('animationend', function () {
-    img.style.animation = '';
-  });
-});
-
 // defines a variable to store computer choice - 33% chance for r/p/s based on a random number generated between 1-100
 let getComputerChoice = () => {
   let randomNumber = Math.floor(Math.random() * 100) + 1;
@@ -164,6 +153,10 @@ buttons.forEach((button) => {
       (computerScore === 3 && playerScore === 0 && tieCounter === 0)
     ) {
       endGame();
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth',
+      });
     }
   });
 });
