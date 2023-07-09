@@ -129,7 +129,7 @@ buttons.forEach((button) => {
         gameResult.style.color = 'lightgreen';
       } else if (playerScore === computerScore) {
         gameResult.textContent =
-          "It's a tie! Not the kind you tie around your neck.";
+          "It's a tie! The machines want a rematch. Do you?";
         gameResult.style.color = 'cadetblue';
       }
 
