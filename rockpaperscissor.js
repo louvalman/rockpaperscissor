@@ -104,7 +104,12 @@ buttons.forEach((button) => {
 
     let roundScore = playerScore + computerScore + tieCounter;
 
-    roundCount.textContent = `Round ${roundScore}`; // move below buttons (and make bigger)
+    let bestOfText = document.createElement('p');
+    bestOfText.textContent = 'best of 5';
+    bestOfText.classList.add('bestOf');
+
+    roundCount.innerHTML = `Round ${roundScore}<br>`; // show round score below buttons (and make bigger)
+    roundCount.appendChild(bestOfText);
     roundCount.classList.add('roundNumber');
     roundContainer.append(roundCount);
 
@@ -181,8 +186,8 @@ const newGame = () => {
   score.removeChild(playAgain);
   score.removeChild(gameResult);
   gameResult.textContent = '';
-  
-   // scroll to top of page
+
+  // scroll to top of page
   window.scrollTo({
     top: 0,
     behavior: 'smooth',
