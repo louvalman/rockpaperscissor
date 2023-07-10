@@ -36,6 +36,14 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+// removes game text header when game starts
+const removeGameTextHeader = () => {
+  gameTextHeader.classList.add('fade-out');
+  gameTextHeader.addEventListener('transitionend', () => {
+    gameTextHeaderContainer.removeChild(gameTextHeader);
+  });
+};
+
 // removes intro game text when game starts
 const removeGameText = () => {
   gameText.classList.add('fade-out');
@@ -49,6 +57,10 @@ const removeRoundCountPlaceholder = () => {
 };
 
 // defines game components
+let gameTextHeaderContainer = document.querySelector(
+  '.gameTextHeaderContainer'
+);
+let gameTextHeader = document.querySelector('.gameTextHeader');
 let gameText = document.querySelector('.gameText');
 let roundContainer = document.querySelector('.roundContainer');
 let roundCountPlaceholder = document.querySelector('.roundCountPlaceholder');
@@ -73,7 +85,11 @@ const buttons = document.querySelectorAll('button');
 // when buttons (r/p/s) are clicked, define player selection, get computer choice and play game
 buttons.forEach((button) => {
   button.addEventListener('click', (e) => {
-    // if the round count placeholder exists in DOM, remove it (is replaced with round counter below)
+    // if the gameTextHeader, gameText or round count placeholder exists in DOM, remove it (it is replaced below)
+    if (gameTextHeader.parentNode === gameTextHeaderContainer) {
+      removeGameTextHeader();
+    }
+
     if (roundCountPlaceholder.parentNode === roundContainer) {
       removeRoundCountPlaceholder();
     }
@@ -176,6 +192,8 @@ const newGame = () => {
   buttons.forEach((button) => {
     button.removeAttribute('disabled', '');
   });
+  gameTextHeaderContainer.appendChild(gameTextHeader);
+  gameTextHeader.classList.remove('fade-out');
   roundContainer.appendChild(roundCountPlaceholder);
   gameTextContainer.appendChild(gameText);
   gameText.classList.remove('fade-out');
