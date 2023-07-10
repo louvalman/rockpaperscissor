@@ -69,9 +69,14 @@
 
       button:disabled {
         background-color: rgb(251, 247, 247);
-        color: lightslategray;
+        color: lightgray;
         border-color: lightgray;
         box-shadow: none;
+      }
+
+      button:disabled img {
+        filter: invert(99%) sepia(0%) saturate(36%) hue-rotate(140deg)
+          brightness(87%) contrast(90%);
       }
 
       button:disabled:hover {
