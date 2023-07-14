@@ -67,6 +67,7 @@ let roundCountPlaceholder = document.querySelector('.roundCountPlaceholder');
 let score = document.querySelector('.score');
 let playerCompScore = document.querySelector('.playerCompScore');
 let gameTextContainer = document.querySelector('.gameTextContainer');
+let gameOverMsg = document.querySelector('.gameOverMsg');
 
 // init scores
 let playerScore = 0;
@@ -155,7 +156,7 @@ buttons.forEach((button) => {
 
       roundCount.innerHTML = `Game over<br>`;
 
-      score.append(gameResult);
+      gameOverMsg.append(gameResult);
       gameResult.classList.add('fade-in-animation');
 
       score.append(playAgain);
@@ -205,7 +206,7 @@ const newGame = () => {
   playerCompScore.removeChild(playerResult);
   playerCompScore.removeChild(roundStatus);
   score.removeChild(playAgain);
-  score.removeChild(gameResult);
+  gameOverMsg.removeChild(gameResult);
   gameResult.textContent = '';
 
   // scroll to top of page
