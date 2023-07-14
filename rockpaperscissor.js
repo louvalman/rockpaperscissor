@@ -113,23 +113,23 @@ buttons.forEach((button) => {
       // calculate the winner by incrementing the player's or computer's score by looking at the winner variable defined in the playRound function
       playerScore++;
       roundScore++;
-      roundStatus.innerHTML = `You won round <strong>${
+      roundStatus.innerHTML = `<span style="font-size: 18px"><strong>You won round ${
         roundScore - 1
-      }</strong><br><strong>${
+      }</strong></span><br><br><strong>${
         playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
       }</strong> beats <strong>${computerSelection}</strong>. Hope is restored!`;
-      roundStatus.style.color = 'lightgreen';
+      roundStatus.style.color = '#00cb00';
     } else if (roundResult.winner === 'computer') {
       computerScore++;
       roundScore++;
-      roundStatus.innerHTML = `You lost round <strong>${
+      roundStatus.innerHTML = `<span style="font-size: 18px"><strong>You lost round ${
         roundScore - 1
-      }</strong><br><strong>${
+      }</strong></span><br><br><strong>${
         playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
       }</strong> loses to <strong>${computerSelection}</strong>. Damn machines!`;
       roundStatus.style.color = 'lightcoral';
     } else if (roundResult.winner === null) {
-      roundStatus.innerHTML = `It's a tie<br>Both you and the machines picked <strong>${playerSelection}</strong>. Replay round <strong>${roundScore}</strong>.`;
+      roundStatus.innerHTML = `<span style="font-size: 18px"><strong>It's a tie</strong></span><br><br>Both you and the machines picked <strong>${playerSelection}</strong>. Replay round <strong>${roundScore}</strong>.`;
       roundStatus.style.color = 'cadetblue';
     }
 
@@ -156,7 +156,7 @@ buttons.forEach((button) => {
         gameResult.style.color = 'lightcoral';
       } else if (playerScore > computerScore) {
         gameResult.textContent = 'You did it! Humanity is saved!';
-        gameResult.style.color = 'lightgreen';
+        gameResult.style.color = '#00cb00';
       } else if (playerScore === computerScore) {
         gameResult.textContent =
           "It's a tie! The machines want a rematch. Do you?";
