@@ -71,7 +71,7 @@ let gameTextContainer = document.querySelector('.gameTextContainer');
 // init scores
 let playerScore = 0;
 let computerScore = 0;
-let tieCounter = 0;
+let roundScore = 1;
 
 let roundStatus = document.createElement('p');
 let playerResult = document.createElement('p');
@@ -106,25 +106,29 @@ buttons.forEach((button) => {
     if (roundResult.winner === 'player') {
       // calculate the winner by incrementing the player's or computer's score by looking at the winner variable defined in the playRound function
       playerScore++;
-      roundStatus.innerHTML = `For humanity! You win the round with <strong>${playerSelection}</strong> against <strong>${computerSelection}</strong>.`;
+      roundScore++;
+      roundStatus.innerHTML = `For humanity! You win round <strong>${
+        roundScore - 1
+      }</strong> with <strong>${playerSelection}</strong> against <strong>${computerSelection}</strong>.`;
       roundStatus.style.color = 'lightgreen';
     } else if (roundResult.winner === 'computer') {
       computerScore++;
-      roundStatus.innerHTML = `Damn machines! You lost the round with <strong>${playerSelection}</strong> against <strong>${computerSelection}</strong>.`;
+      roundScore++;
+      roundStatus.innerHTML = `Damn machines! You lost round <strong>${
+        roundScore - 1
+      }</strong> with <strong>${playerSelection}</strong> against <strong>${computerSelection}</strong>.`;
       roundStatus.style.color = 'lightcoral';
     } else if (roundResult.winner === null) {
-      tieCounter++;
-      roundStatus.innerHTML = `It's a tie. Both you and the machines picked <strong>${playerSelection}</strong>.`;
+      roundStatus.innerHTML = `It's a tie. Both you and the machines picked <strong>${playerSelection}</strong>.<br>Replay the round.`;
       roundStatus.style.color = 'cadetblue';
     }
-
-    let roundScore = playerScore + computerScore + tieCounter;
 
     let bestOfText = document.createElement('p');
     bestOfText.textContent = 'best of 5';
     bestOfText.classList.add('bestOf');
 
     roundCount.innerHTML = `Round ${roundScore}<br>`; // show round score below buttons (and make bigger)
+
     roundCount.appendChild(bestOfText);
     roundCount.classList.add('roundNumber');
     roundContainer.append(roundCount);
@@ -149,6 +153,8 @@ buttons.forEach((button) => {
         gameResult.style.color = 'cadetblue';
       }
 
+      roundCount.innerHTML = `Game over<br>`;
+
       score.appendChild(gameResult);
       gameResult.classList.add('fade-in-animation');
 
@@ -163,15 +169,13 @@ buttons.forEach((button) => {
 
     if (
       // end game if:
-      playerScore + computerScore + tieCounter === 5 || // if five rounds are played
-      (playerScore === 3 && computerScore === 0 && tieCounter === 1) || // if player/computer reaches a 3-0 score (in 4 rounds)
-      (computerScore === 3 && playerScore === 0 && tieCounter === 1) ||
-      (playerScore === 2 && computerScore === 0 && tieCounter === 2) || // if a 2-0 score is reached after 4 rounds
-      (computerScore === 2 && playerScore === 0 && tieCounter === 2) ||
-      (computerScore === 3 && playerScore === 1 && tieCounter === 0) || // if the score is 3-1 after 4 rounds
-      (playerScore === 3 && computerScore === 1 && tieCounter === 0) ||
-      (playerScore === 3 && computerScore === 0 && tieCounter === 0) || // if the score is 3-0 after 3 rounds
-      (computerScore === 3 && playerScore === 0 && tieCounter === 0)
+      playerScore + computerScore === 5 || // if five rounds are played
+      (playerScore === 3 && computerScore === 0) || // if player/computer reaches a 3-0 score (in 4 rounds)
+      (computerScore === 3 && playerScore === 0) ||
+      (computerScore === 3 && playerScore === 1) || // if the score is 3-1 after 4 rounds
+      (playerScore === 3 && computerScore === 1) ||
+      (playerScore === 3 && computerScore === 0) || // if the score is 3-0 after 3 rounds
+      (computerScore === 3 && playerScore === 0)
     ) {
       endGame();
       // scroll to bottom of page
@@ -187,8 +191,7 @@ const newGame = () => {
   // reset the scoreboard and all counters
   playerScore = 0;
   computerScore = 0;
-  tieCounter = 0;
-  roundScore = 0;
+  roundScore = 1;
   buttons.forEach((button) => {
     button.removeAttribute('disabled', '');
   });
