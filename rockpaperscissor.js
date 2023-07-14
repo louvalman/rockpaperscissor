@@ -40,7 +40,9 @@ function playRound(playerSelection, computerSelection) {
 const removeGameTextHeader = () => {
   gameTextHeader.classList.add('fade-out');
   gameTextHeader.addEventListener('transitionend', () => {
-    gameTextHeaderContainer.removeChild(gameTextHeader);
+    if (gameTextHeader.parentNode === gameTextHeaderContainer) {
+      gameTextHeaderContainer.removeChild(gameTextHeader);
+    }
   });
 };
 
@@ -48,7 +50,9 @@ const removeGameTextHeader = () => {
 const removeGameText = () => {
   gameText.classList.add('fade-out');
   gameText.addEventListener('transitionend', () => {
-    gameTextContainer.removeChild(gameText);
+    if (gameText.parentNode === gameTextContainer) {
+      gameTextContainer.removeChild(gameText);
+    }
   });
 };
 
@@ -57,17 +61,18 @@ const removeRoundCountPlaceholder = () => {
 };
 
 // defines game components
-let gameTextHeaderContainer = document.querySelector(
+const gameTextHeaderContainer = document.querySelector(
   '.gameTextHeaderContainer'
 );
-let gameTextHeader = document.querySelector('.gameTextHeader');
-let gameText = document.querySelector('.gameText');
-let roundContainer = document.querySelector('.roundContainer');
-let roundCountPlaceholder = document.querySelector('.roundCountPlaceholder');
-let score = document.querySelector('.score');
-let playerCompScore = document.querySelector('.playerCompScore');
-let gameTextContainer = document.querySelector('.gameTextContainer');
-let gameOverMsg = document.querySelector('.gameOverMsg');
+const gameTextHeader = document.querySelector('.gameTextHeader');
+const gameText = document.querySelector('.gameText');
+const roundContainer = document.querySelector('.roundContainer');
+const roundCountPlaceholder = document.querySelector('.roundCountPlaceholder');
+const score = document.querySelector('.score');
+const playerCompScore = document.querySelector('.playerCompScore');
+const gameTextContainer = document.querySelector('.gameTextContainer');
+const gameOverMsg = document.querySelector('.gameOverMsg');
+const selection = document.querySelector('.selection');
 
 // init scores
 let playerScore = 0;
@@ -108,19 +113,19 @@ buttons.forEach((button) => {
       // calculate the winner by incrementing the player's or computer's score by looking at the winner variable defined in the playRound function
       playerScore++;
       roundScore++;
-      roundStatus.innerHTML = `For humanity! You win round <strong>${
+      roundStatus.innerHTML = `Hope is restored!<br>You win round <strong>${
         roundScore - 1
       }</strong> with <strong>${playerSelection}</strong> against <strong>${computerSelection}</strong>.`;
       roundStatus.style.color = 'lightgreen';
     } else if (roundResult.winner === 'computer') {
       computerScore++;
       roundScore++;
-      roundStatus.innerHTML = `Damn machines! You lost round <strong>${
+      roundStatus.innerHTML = `Damn machines!<br>You lost round <strong>${
         roundScore - 1
       }</strong> with <strong>${playerSelection}</strong> against <strong>${computerSelection}</strong>.`;
       roundStatus.style.color = 'lightcoral';
     } else if (roundResult.winner === null) {
-      roundStatus.innerHTML = `It's a tie. Both you and the machines picked <strong>${playerSelection}</strong>.<br>Replay the round.`;
+      roundStatus.innerHTML = `It's a tie.<br>Both you and the machines picked <strong>${playerSelection}</strong>. Replay round <strong>${roundScore}</strong>.`;
       roundStatus.style.color = 'cadetblue';
     }
 
@@ -154,7 +159,7 @@ buttons.forEach((button) => {
         gameResult.style.color = 'cadetblue';
       }
 
-      roundCount.innerHTML = `Game over<br>`;
+      roundCount.innerHTML = `<br>`;
 
       gameOverMsg.append(gameResult);
       gameResult.classList.add('fade-in-animation');
@@ -165,6 +170,7 @@ buttons.forEach((button) => {
 
       buttons.forEach((button) => {
         button.setAttribute('disabled', '');
+        selection.removeChild(button);
       });
     };
 
@@ -195,6 +201,7 @@ const newGame = () => {
   roundScore = 1;
   buttons.forEach((button) => {
     button.removeAttribute('disabled', '');
+    selection.appendChild(button); // Re-append each button to the selection container
   });
   gameTextHeaderContainer.appendChild(gameTextHeader);
   gameTextHeader.classList.remove('fade-out');
