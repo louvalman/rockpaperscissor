@@ -155,7 +155,7 @@ buttons.forEach((button) => {
 
       roundCount.innerHTML = `Game over<br>`;
 
-      score.appendChild(gameResult);
+      score.append(gameResult);
       gameResult.classList.add('fade-in-animation');
 
       score.append(playAgain);
