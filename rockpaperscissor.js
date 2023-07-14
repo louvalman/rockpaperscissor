@@ -191,7 +191,7 @@ buttons.forEach((button) => {
       endGame();
       // scroll to bottom of page
       window.scrollTo({
-        top: document.documentElement.scrollHeight,
+        top: 0,
         behavior: 'smooth',
       });
     }
