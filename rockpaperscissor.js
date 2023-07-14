@@ -104,7 +104,7 @@ buttons.forEach((button) => {
       removeGameText();
     }
 
-    const playerSelection = e.target.id;
+    const playerSelection = e.currentTarget.id;
     const computerSelection = getComputerChoice();
 
     const roundResult = playRound(playerSelection, computerSelection);
@@ -113,19 +113,23 @@ buttons.forEach((button) => {
       // calculate the winner by incrementing the player's or computer's score by looking at the winner variable defined in the playRound function
       playerScore++;
       roundScore++;
-      roundStatus.innerHTML = `Hope is restored!<br>You win round <strong>${
+      roundStatus.innerHTML = `You won round <strong>${
         roundScore - 1
-      }</strong> with <strong>${playerSelection}</strong> against <strong>${computerSelection}</strong>.`;
+      }</strong><br><strong>${
+        playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
+      }</strong> beats <strong>${computerSelection}</strong>. Hope is restored!`;
       roundStatus.style.color = 'lightgreen';
     } else if (roundResult.winner === 'computer') {
       computerScore++;
       roundScore++;
-      roundStatus.innerHTML = `Damn machines!<br>You lost round <strong>${
+      roundStatus.innerHTML = `You lost round <strong>${
         roundScore - 1
-      }</strong> with <strong>${playerSelection}</strong> against <strong>${computerSelection}</strong>.`;
+      }</strong><br><strong>${
+        playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
+      }</strong> loses to <strong>${computerSelection}</strong>. Damn machines!`;
       roundStatus.style.color = 'lightcoral';
     } else if (roundResult.winner === null) {
-      roundStatus.innerHTML = `It's a tie.<br>Both you and the machines picked <strong>${playerSelection}</strong>. Replay round <strong>${roundScore}</strong>.`;
+      roundStatus.innerHTML = `It's a tie<br>Both you and the machines picked <strong>${playerSelection}</strong>. Replay round <strong>${roundScore}</strong>.`;
       roundStatus.style.color = 'cadetblue';
     }
 
