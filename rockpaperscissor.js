@@ -61,6 +61,10 @@ const removeRoundCountPlaceholder = () => {
 };
 
 // defines game components
+const container = document.querySelector('.container');
+const startBtn = document.querySelector('.startBtn');
+const startGame = document.querySelector('.startGame');
+const selectionButtons = document.querySelectorAll('.selection button');
 const gameTextHeaderContainer = document.querySelector(
   '.gameTextHeaderContainer'
 );
@@ -88,8 +92,14 @@ let playAgain = document.createElement('button');
 
 const buttons = document.querySelectorAll('button');
 
+//start game
+startBtn.addEventListener('click', () => {
+  startGame.style.opacity = '1';
+  container.removeChild(startBtn);
+});
+
 // when buttons (r/p/s) are clicked, define player selection, get computer choice and play game
-buttons.forEach((button) => {
+selectionButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
     // if the gameTextHeader, gameText or round count placeholder exists in DOM, remove it (it is replaced below)
     if (gameTextHeader.parentNode === gameTextHeaderContainer) {
@@ -137,7 +147,7 @@ buttons.forEach((button) => {
     bestOfText.textContent = 'best of 5';
     bestOfText.classList.add('bestOf');
 
-    roundCount.innerHTML = `Round ${roundScore}<br>`; // show round score below buttons (and make bigger)
+    roundCount.innerHTML = `<strong>Round ${roundScore}</strong><br>`; // show round score below buttons (and make bigger)
 
     roundCount.appendChild(bestOfText);
     roundCount.classList.add('roundNumber');
@@ -203,7 +213,7 @@ const newGame = () => {
   playerScore = 0;
   computerScore = 0;
   roundScore = 1;
-  buttons.forEach((button) => {
+  selectionButtons.forEach((button) => {
     button.removeAttribute('disabled', '');
     selection.appendChild(button); // Re-append each button to the selection container
   });

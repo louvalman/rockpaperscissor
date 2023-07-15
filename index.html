@@ -104,6 +104,15 @@
         font-weight: 200;
       }
 
+      .startGame {
+        opacity: 0;
+        transition: 1s;
+      }
+
+      .startBtn {
+        margin-top: 16px;
+      }
+
       .score {
         display: flex;
         align-items: center;
@@ -122,6 +131,7 @@
       .roundNumber {
         font-size: 18px;
         text-align: center;
+        font-weight: 200;
       }
 
       .bestOf {
@@ -274,36 +284,46 @@
           will succeed. Good luck!
         </h3>
       </div>
-      <div
+      <button
         data-aos-anchor="#anch"
         data-aos="fade-up"
         data-aos-anchor-placement="top-center"
         data-aos-duration="1000"
-        class="roundContainer">
-        <p class="roundCountPlaceholder roundNumber">
-          Round 1
-          <br />
-          Pick your weapon!
-        </p>
-      </div>
-      <div
-        data-aos-anchor="#con-anchor"
-        data-aos="fade-up"
-        data-aos-anchor-placement="top-center"
-        data-aos-duration="1200"
-        class="selection">
-        <button id="rock">
-          <img src="assets/rock.svg" alt="" />
-          Rock
-        </button>
-        <button id="paper">
-          <img src="assets/paper.svg" alt="" />
-          Paper
-        </button>
-        <button id="scissor">
-          <img src="assets/scissor.svg" alt="" />
-          Scissors
-        </button>
+        class="startBtn">
+        Start battle
+      </button>
+      <div class="startGame">
+        <div
+          data-aos-anchor="#anch"
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-center"
+          data-aos-duration="1000"
+          class="roundContainer">
+          <p class="roundCountPlaceholder roundNumber">
+            <strong>Round 1</strong>
+            <br />
+            Pick your weapon
+          </p>
+        </div>
+        <div
+          data-aos-anchor="#con-anchor"
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-center"
+          data-aos-duration="1200"
+          class="selection">
+          <button id="rock">
+            <img src="assets/rock.svg" alt="" />
+            Rock
+          </button>
+          <button id="paper">
+            <img src="assets/paper.svg" alt="" />
+            Paper
+          </button>
+          <button id="scissor">
+            <img src="assets/scissor.svg" alt="" />
+            Scissors
+          </button>
+        </div>
       </div>
     </div>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
