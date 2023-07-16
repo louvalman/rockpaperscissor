@@ -140,7 +140,7 @@ selectionButtons.forEach((button) => {
       roundScore++;
       roundStatus.innerHTML = `<span style="font-size: 20px"><strong>You won round ${
         roundScore - 1
-      }</strong></span><br><br><strong>${
+      }</strong></span><br><strong>${
         playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
       }</strong> beats <strong>${computerSelection}</strong>. Hope is restored!`;
       roundStatus.style.color = '#00cb00';
@@ -149,12 +149,12 @@ selectionButtons.forEach((button) => {
       roundScore++;
       roundStatus.innerHTML = `<span style="font-size: 20px"><strong>You lost round ${
         roundScore - 1
-      }</strong></span><br><br><strong>${
+      }</strong></span><br><strong>${
         playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
       }</strong> loses to <strong>${computerSelection}</strong>. Damn machines!`;
       roundStatus.style.color = 'lightcoral';
     } else if (roundResult.winner === null) {
-      roundStatus.innerHTML = `<span style="font-size: 20px"><strong>It's a tie</strong></span><br><br>Both you and the machines picked <strong>${playerSelection}</strong>. Replay round <strong>${roundScore}</strong>.`;
+      roundStatus.innerHTML = `<span style="font-size: 20px"><strong>It's a tie</strong></span><br>Both you and the machines picked <strong>${playerSelection}</strong>. Replay round <strong>${roundScore}</strong>.`;
       roundStatus.style.color = 'cadetblue';
     }
 
