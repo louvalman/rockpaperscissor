@@ -109,8 +109,16 @@
         transition: 1s;
       }
 
-      .startBtn {
+      .startBtnMargin {
         margin-top: 16px;
+      }
+
+      .startBtn {
+        animation: fadein-pulse2 2s infinite;
+      }
+
+      .startBtnText {
+        animation: fadein-pulse 2s infinite;
       }
 
       .score {
@@ -182,6 +190,36 @@
         }
         to {
           opacity: 1;
+        }
+      }
+
+      @keyframes fadein-pulse2 {
+        0% {
+          box-shadow: 0px 0px 8px #a89a6f;
+          border-color: #a89a6f;
+        }
+        50% {
+          box-shadow: none;
+          border-color: #a89a6f;
+        }
+        100% {
+          box-shadow: 0px 0px 8px #a89a6f;
+          border-color: #a89a6f;
+        }
+      }
+
+      @keyframes fadein-pulse {
+        0% {
+          opacity: 1;
+          color: #a89a6f;
+        }
+        50% {
+          opacity: 0.8;
+          color: #1e1e1e;
+        }
+        100% {
+          opacity: 1;
+          color: #a89a6f;
         }
       }
 
@@ -289,8 +327,8 @@
         data-aos="fade-up"
         data-aos-anchor-placement="top-center"
         data-aos-duration="1000"
-        class="startBtn">
-        Start battle
+        class="startBtn startBtnMargin">
+        <span class="startBtnText">Start battle</span>
       </button>
       <div class="startGame">
         <div

@@ -63,6 +63,7 @@ const removeRoundCountPlaceholder = () => {
 // defines game components
 const container = document.querySelector('.container');
 const startBtn = document.querySelector('.startBtn');
+const startBtnText = document.querySelector('.startBtnText');
 const startGame = document.querySelector('.startGame');
 const selectionButtons = document.querySelectorAll('.selection button');
 const gameTextHeaderContainer = document.querySelector(
@@ -92,7 +93,21 @@ let playAgain = document.createElement('button');
 
 const buttons = document.querySelectorAll('button');
 
-//start game
+// remove animation on hover start game btn
+function disableAnimation() {
+  startBtnText.classList.remove('startBtnText');
+  startBtn.classList.remove('startBtn');
+}
+
+function enableAnimation() {
+  startBtnText.classList.add('startBtnText');
+  startBtn.classList.add('startBtn');
+}
+
+startBtn.addEventListener('mouseenter', disableAnimation);
+startBtn.addEventListener('mouseleave', enableAnimation);
+
+// start game
 startBtn.addEventListener('click', () => {
   startGame.style.opacity = '1';
   container.removeChild(startBtn);
@@ -123,7 +138,7 @@ selectionButtons.forEach((button) => {
       // calculate the winner by incrementing the player's or computer's score by looking at the winner variable defined in the playRound function
       playerScore++;
       roundScore++;
-      roundStatus.innerHTML = `<span style="font-size: 18px"><strong>You won round ${
+      roundStatus.innerHTML = `<span style="font-size: 20px"><strong>You won round ${
         roundScore - 1
       }</strong></span><br><br><strong>${
         playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
@@ -132,14 +147,14 @@ selectionButtons.forEach((button) => {
     } else if (roundResult.winner === 'computer') {
       computerScore++;
       roundScore++;
-      roundStatus.innerHTML = `<span style="font-size: 18px"><strong>You lost round ${
+      roundStatus.innerHTML = `<span style="font-size: 20px"><strong>You lost round ${
         roundScore - 1
       }</strong></span><br><br><strong>${
         playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
       }</strong> loses to <strong>${computerSelection}</strong>. Damn machines!`;
       roundStatus.style.color = 'lightcoral';
     } else if (roundResult.winner === null) {
-      roundStatus.innerHTML = `<span style="font-size: 18px"><strong>It's a tie</strong></span><br><br>Both you and the machines picked <strong>${playerSelection}</strong>. Replay round <strong>${roundScore}</strong>.`;
+      roundStatus.innerHTML = `<span style="font-size: 20px"><strong>It's a tie</strong></span><br><br>Both you and the machines picked <strong>${playerSelection}</strong>. Replay round <strong>${roundScore}</strong>.`;
       roundStatus.style.color = 'cadetblue';
     }
 
@@ -182,7 +197,7 @@ selectionButtons.forEach((button) => {
       playAgain.textContent = 'Play again';
       playAgain.classList.add('playAgainClass');
 
-      buttons.forEach((button) => {
+      selectionButtons.forEach((button) => {
         button.setAttribute('disabled', '');
         selection.removeChild(button);
       });
