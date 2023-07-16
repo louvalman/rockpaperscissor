@@ -84,7 +84,8 @@
       }
 
       .topimg {
-        width: 480px;
+        margin-top: 40px;
+        width: 440px;
       }
 
       .topimg:hover {
@@ -115,6 +116,13 @@
 
       .startBtn {
         animation: fadein-pulse2 2.5s infinite;
+        transition: 0.33s;
+      }
+
+      .startBtnHover {
+        box-shadow: 0px 0px 8px 2px #779fa1 !important;
+        border-color: transparent !important;
+        color: #779fa1;
       }
 
       .startBtnText {
@@ -167,7 +175,7 @@
       }
 
       .credits a:hover {
-        color: cadetblue;
+        color: #779fa1;
       }
 
       .credits .fa {
@@ -195,7 +203,7 @@
 
       @keyframes fadein-pulse2 {
         0% {
-          box-shadow: 0px 0px 8px #a89a6f;
+          box-shadow: 0px 0px 8px 2px #779fa1;
           border-color: transparent;
         }
         50% {
@@ -203,7 +211,7 @@
           border-color: #1e1e1e;
         }
         100% {
-          box-shadow: 0px 0px 8px #a89a6f;
+          box-shadow: 0px 0px 8px 2px #779fa1;
           border-color: transparent;
         }
       }
@@ -211,7 +219,7 @@
       @keyframes fadein-pulse {
         0% {
           opacity: 1;
-          color: #a89a6f;
+          color: #779fa1;
         }
         50% {
           opacity: 1;
@@ -219,7 +227,7 @@
         }
         100% {
           opacity: 1;
-          color: #a89a6f;
+          color: #779fa1;
         }
       }
 

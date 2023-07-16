@@ -97,11 +97,13 @@ const buttons = document.querySelectorAll('button');
 function disableAnimation() {
   startBtnText.classList.remove('startBtnText');
   startBtn.classList.remove('startBtn');
+  startBtn.classList.add('startBtnHover');
 }
 
 function enableAnimation() {
   startBtnText.classList.add('startBtnText');
   startBtn.classList.add('startBtn');
+  startBtn.classList.remove('startBtnHover');
 }
 
 startBtn.addEventListener('mouseenter', disableAnimation);
@@ -152,7 +154,7 @@ selectionButtons.forEach((button) => {
       }</strong></span><br><strong>${
         playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
       }</strong> loses to <strong>${computerSelection}</strong>. Damn machines!`;
-      roundStatus.style.color = 'lightcoral';
+      roundStatus.style.color = '#EE3224';
     } else if (roundResult.winner === null) {
       roundStatus.innerHTML = `<span style="font-size: 20px"><strong>It's a tie</strong></span><br>Both you and the machines picked <strong>${playerSelection}</strong>. Replay round <strong>${roundScore}</strong>.`;
       roundStatus.style.color = 'cadetblue';
@@ -178,7 +180,7 @@ selectionButtons.forEach((button) => {
       if (computerScore > playerScore) {
         gameResult.textContent =
           'Oh no, the invasion has begun. Humanity is lost.';
-        gameResult.style.color = 'lightcoral';
+        gameResult.style.color = '#EE3224';
       } else if (playerScore > computerScore) {
         gameResult.textContent = 'You did it! Humanity is saved!';
         gameResult.style.color = '#00cb00';
