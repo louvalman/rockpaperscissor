@@ -1,6 +1,49 @@
 // initialize animate on scroll lib
 AOS.init();
 
+// defines game components
+const container = document.querySelector('.container');
+const startBtn = document.querySelector('.start-btn');
+const startBtnText = document.querySelector('.start-btn-text');
+const startGame = document.querySelector('.start-game');
+const selectionButtons = document.querySelectorAll('.selection button');
+const gameTextHeaderContainer = document.querySelector(
+  '.game-text-header-container'
+);
+const gameTextHeader = document.querySelector('.game-text-header');
+const gameText = document.querySelector('.game-text');
+const roundContainer = document.querySelector('.round-container');
+const roundCountPlaceholder = document.querySelector(
+  '.round-count-placeholder'
+);
+const score = document.querySelector('.score');
+const playerCompScore = document.querySelector('.player-comp-score');
+const gameTextContainer = document.querySelector('.game-text-container');
+const gameOverMsg = document.querySelector('.game-over-msg');
+const selection = document.querySelector('.selection');
+
+// remove animation on hover on start game btn
+function disableAnimation() {
+  startBtnText.classList.remove('start-btn-text');
+  startBtn.classList.remove('start-btn');
+  startBtn.classList.add('start-btn-hover');
+}
+
+function enableAnimation() {
+  startBtnText.classList.add('start-btn-text');
+  startBtn.classList.add('start-btn');
+  startBtn.classList.remove('start-btn-hover');
+}
+
+startBtn.addEventListener('mouseenter', disableAnimation);
+startBtn.addEventListener('mouseleave', enableAnimation);
+
+// start game and make round 1 selection visible
+startBtn.addEventListener('click', () => {
+  startGame.style.opacity = '1';
+  container.removeChild(startBtn);
+});
+
 // defines a variable to store computer choice - 33% chance for r/p/s based on a random number generated between 1-100
 let getComputerChoice = () => {
   let randomNumber = Math.floor(Math.random() * 100) + 1;
@@ -13,7 +56,7 @@ let getComputerChoice = () => {
   }
 };
 
-// defines playRound function (core mechanics of game)
+// defines playRound function (core mechanics of game) used when player clicks on their selection for each round
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === 'rock' && computerSelection === 'paper') {
     return { result: 'You lose! Paper beats Rock.', winner: 'computer' };
@@ -60,25 +103,6 @@ const removeRoundCountPlaceholder = () => {
   roundContainer.removeChild(roundCountPlaceholder);
 };
 
-// defines game components
-const container = document.querySelector('.container');
-const startBtn = document.querySelector('.startBtn');
-const startBtnText = document.querySelector('.startBtnText');
-const startGame = document.querySelector('.startGame');
-const selectionButtons = document.querySelectorAll('.selection button');
-const gameTextHeaderContainer = document.querySelector(
-  '.gameTextHeaderContainer'
-);
-const gameTextHeader = document.querySelector('.gameTextHeader');
-const gameText = document.querySelector('.gameText');
-const roundContainer = document.querySelector('.roundContainer');
-const roundCountPlaceholder = document.querySelector('.roundCountPlaceholder');
-const score = document.querySelector('.score');
-const playerCompScore = document.querySelector('.playerCompScore');
-const gameTextContainer = document.querySelector('.gameTextContainer');
-const gameOverMsg = document.querySelector('.gameOverMsg');
-const selection = document.querySelector('.selection');
-
 // init scores
 let playerScore = 0;
 let computerScore = 0;
@@ -92,28 +116,6 @@ let gameResult = document.createElement('h2');
 let playAgain = document.createElement('button');
 
 const buttons = document.querySelectorAll('button');
-
-// remove animation on hover start game btn
-function disableAnimation() {
-  startBtnText.classList.remove('startBtnText');
-  startBtn.classList.remove('startBtn');
-  startBtn.classList.add('startBtnHover');
-}
-
-function enableAnimation() {
-  startBtnText.classList.add('startBtnText');
-  startBtn.classList.add('startBtn');
-  startBtn.classList.remove('startBtnHover');
-}
-
-startBtn.addEventListener('mouseenter', disableAnimation);
-startBtn.addEventListener('mouseleave', enableAnimation);
-
-// start game
-startBtn.addEventListener('click', () => {
-  startGame.style.opacity = '1';
-  container.removeChild(startBtn);
-});
 
 // when buttons (r/p/s) are clicked, define player selection, get computer choice and play game
 selectionButtons.forEach((button) => {
@@ -162,12 +164,12 @@ selectionButtons.forEach((button) => {
 
     let bestOfText = document.createElement('p');
     bestOfText.textContent = 'best of 5';
-    bestOfText.classList.add('bestOf');
+    bestOfText.classList.add('best-of');
 
     roundCount.innerHTML = `<strong>Round ${roundScore}</strong><br>`; // show round score below buttons (and make bigger)
 
     roundCount.appendChild(bestOfText);
-    roundCount.classList.add('roundNumber');
+    roundCount.classList.add('round-number');
     roundContainer.append(roundCount);
 
     playerCompScore.appendChild(roundStatus);
@@ -197,7 +199,7 @@ selectionButtons.forEach((button) => {
 
       score.append(playAgain);
       playAgain.textContent = 'Play again';
-      playAgain.classList.add('playAgainClass');
+      playAgain.classList.add('play-again-class');
 
       selectionButtons.forEach((button) => {
         button.setAttribute('disabled', '');
@@ -216,11 +218,6 @@ selectionButtons.forEach((button) => {
       (computerScore === 3 && playerScore === 0)
     ) {
       endGame();
-      // scroll to bottom of page
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
     }
   });
 });

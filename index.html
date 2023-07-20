@@ -83,12 +83,12 @@
         background-color: rgb(251, 247, 247);
       }
 
-      .topimg {
+      .top-img {
         margin-top: 40px;
         width: 440px;
       }
 
-      .topimg:hover {
+      .top-img:hover {
         animation: bounce 0.7s;
       }
 
@@ -100,33 +100,33 @@
         position: relative;
       }
 
-      .gameText {
+      .game-text {
         width: 800px;
         font-weight: 200;
       }
 
-      .startGame {
+      .start-game {
         opacity: 0;
         transition: 1s;
       }
 
-      .startBtnMargin {
+      .start-btn-margin {
         margin-top: 16px;
       }
 
-      .startBtn {
-        animation: fadein-pulse2 2.5s infinite;
+      .start-btn {
+        animation: fade-in-pulse2 2.5s infinite;
         transition: 0.33s;
       }
 
-      .startBtnHover {
+      .start-btn-hover {
         box-shadow: 0px 0px 8px 2px #779fa1 !important;
         border-color: transparent !important;
         color: #779fa1;
       }
 
-      .startBtnText {
-        animation: fadein-pulse 2.5s infinite;
+      .start-btn-text {
+        animation: fade-in-pulse 2.5s infinite;
       }
 
       .score {
@@ -144,13 +144,13 @@
         justify-content: center;
       }
 
-      .roundNumber {
+      .round-number {
         font-size: 18px;
         text-align: center;
         font-weight: 200;
       }
 
-      .bestOf {
+      .best-of {
         font-size: 8px;
         font-style: italic;
         margin-top: 0px;
@@ -188,7 +188,7 @@
         transform: rotateY(3.142rad);
       }
 
-      .playAgainClass {
+      .play-again-class {
         margin-bottom: 24px;
       }
 
@@ -201,7 +201,7 @@
         }
       }
 
-      @keyframes fadein-pulse2 {
+      @keyframes fade-in-pulse2 {
         0% {
           box-shadow: 0px 0px 8px 2px #779fa1;
           border-color: transparent;
@@ -216,7 +216,7 @@
         }
       }
 
-      @keyframes fadein-pulse {
+      @keyframes fade-in-pulse {
         0% {
           opacity: 1;
           color: #779fa1;
@@ -265,7 +265,7 @@
       }
 
       @media only screen and (max-width: 600px) {
-        .topimg {
+        .top-img {
           width: 80%;
         }
 
@@ -277,7 +277,7 @@
           min-width: 100px !important;
         }
 
-        .gameText {
+        .game-text {
           width: 100%;
         }
 
@@ -306,7 +306,7 @@
     </div>
     <div class="container">
       <img
-        class="topimg"
+        class="top-img"
         data-aos-anchor="#anchor"
         data-aos="fade-down"
         data-aos-anchor-placement="top-center"
@@ -314,17 +314,17 @@
         src="assets/robot.svg"
         alt=""
         id="anch" />
-      <div class="gameTextHeaderContainer">
-        <h1 class="gameTextHeader" data-aos="fade-down">
+      <div class="game-text-header-container">
+        <h1 class="game-text-header" data-aos="fade-down">
           Humanity depends on you
         </h1>
       </div>
       <div class="score">
-        <div class="gameOverMsg centered"></div>
-        <div class="playerCompScore centered"></div>
+        <div class="game-over-msg centered"></div>
+        <div class="player-comp-score centered"></div>
       </div>
-      <div class="gameTextContainer">
-        <h3 data-aos="fade-down" class="centered gameText fade-in-animation">
+      <div class="game-text-container">
+        <h3 data-aos="fade-down" class="centered game-text fade-in-animation">
           The machine invasion is imminent... The only way to survive is for
           humanity to fight back. Choose your weapon wisely, or the invasion
           will succeed. Good luck!
@@ -335,17 +335,17 @@
         data-aos="fade-up"
         data-aos-anchor-placement="top-center"
         data-aos-duration="1000"
-        class="startBtn startBtnMargin">
-        <span class="startBtnText">Start battle</span>
+        class="start-btn start-btn-margin">
+        <span class="start-btn-text">Start battle</span>
       </button>
-      <div class="startGame">
+      <div class="start-game">
         <div
           data-aos-anchor="#anch"
           data-aos="fade-up"
           data-aos-anchor-placement="top-center"
           data-aos-duration="1000"
-          class="roundContainer">
-          <p class="roundCountPlaceholder roundNumber">
+          class="round-container">
+          <p class="round-count-placeholder round-number">
             <strong>Round 1</strong>
             <br />
             Pick your weapon
