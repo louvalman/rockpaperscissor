@@ -52,7 +52,7 @@ let getComputerChoice = () => {
   } else if (randomNumber <= 66) {
     return 'paper';
   } else {
-    return 'scissor';
+    return 'scissors';
   }
 };
 
@@ -60,21 +60,24 @@ let getComputerChoice = () => {
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === 'rock' && computerSelection === 'paper') {
     return { result: 'You lose! Paper beats Rock.', winner: 'computer' };
-  } else if (playerSelection === 'rock' && computerSelection === 'scissor') {
-    return { result: 'You win! Rock beats Scissor.', winner: 'player' };
+  } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+    return { result: 'You win! Rock beats scissors.', winner: 'player' };
   } else if (playerSelection === 'rock' && computerSelection === 'rock') {
     return { result: 'It is a tie!', winner: null };
   } else if (playerSelection === 'paper' && computerSelection === 'rock') {
     return { result: 'You win! Paper beats rock.', winner: 'player' };
   } else if (playerSelection === 'paper' && computerSelection === 'paper') {
     return { result: 'It is a tie!', winner: null };
-  } else if (playerSelection === 'paper' && computerSelection === 'scissor') {
-    return { result: 'You lose! Scissor beats paper.', winner: 'computer' };
-  } else if (playerSelection === 'scissor' && computerSelection === 'rock') {
-    return { result: 'You lose! Rock beats Scissor.', winner: 'computer' };
-  } else if (playerSelection === 'scissor' && computerSelection === 'paper') {
-    return { result: 'You win! Scissor beats paper', winner: 'player' };
-  } else if (playerSelection === 'scissor' && computerSelection === 'scissor') {
+  } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+    return { result: 'You lose! scissors beats paper.', winner: 'computer' };
+  } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+    return { result: 'You lose! Rock beats scissors.', winner: 'computer' };
+  } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+    return { result: 'You win! scissors beats paper', winner: 'player' };
+  } else if (
+    playerSelection === 'scissors' &&
+    computerSelection === 'scissors'
+  ) {
     return { result: 'It is a tie!', winner: null };
   }
 }
