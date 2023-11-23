@@ -85,21 +85,13 @@ function playRound(playerSelection, computerSelection) {
 // removes game text header when game starts
 const removeGameTextHeader = () => {
   gameTextHeader.classList.add('fade-out');
-  gameTextHeader.addEventListener('transitionend', () => {
-    if (gameTextHeader.parentNode === gameTextHeaderContainer) {
-      gameTextHeaderContainer.removeChild(gameTextHeader);
-    }
-  });
+  gameTextHeaderContainer.removeChild(gameTextHeader);
 };
 
 // removes intro game text when game starts
 const removeGameText = () => {
   gameText.classList.add('fade-out');
-  gameText.addEventListener('transitionend', () => {
-    if (gameText.parentNode === gameTextContainer) {
-      gameTextContainer.removeChild(gameText);
-    }
-  });
+  gameTextContainer.removeChild(gameText);
 };
 
 const removeRoundCountPlaceholder = () => {
