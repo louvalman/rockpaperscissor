@@ -154,7 +154,7 @@ selectionButtons.forEach((button) => {
       roundStatus.style.color = '#EE3224';
     } else if (roundResult.winner === null) {
       roundStatus.innerHTML = `<span style="font-size: 20px"><strong>It's a tie</strong></span><br>Both you and the machines picked <strong>${playerSelection}</strong>. Replay round <strong>${roundScore}</strong>.`;
-      roundStatus.style.color = 'cadetblue';
+      roundStatus.style.color = '#83C5BE';
     }
 
     let bestOfText = document.createElement('p');
@@ -184,7 +184,7 @@ selectionButtons.forEach((button) => {
       } else if (playerScore === computerScore) {
         gameResult.textContent =
           "It's a tie! The machines want a rematch. Do you?";
-        gameResult.style.color = 'cadetblue';
+        gameResult.style.color = '#83C5BE';
       }
 
       roundCount.innerHTML = `<br>`;
