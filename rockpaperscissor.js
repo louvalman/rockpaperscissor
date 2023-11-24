@@ -134,27 +134,23 @@ selectionButtons.forEach((button) => {
     const roundResult = playRound(playerSelection, computerSelection);
 
     if (roundResult.winner === 'player') {
-      // calculate the winner by incrementing the player's or computer's score by looking at the winner variable defined in the playRound function
       playerScore++;
       roundScore++;
-      roundStatus.innerHTML = `<span style="font-size: 20px"><strong>You won round ${
+      roundStatus.innerHTML = `<span style="color: #00cb00; font-size: 20px;"><strong>You won round ${
         roundScore - 1
       }</strong></span><br><strong>${
         playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
       }</strong> beats <strong>${computerSelection}</strong>. Hope is restored!`;
-      roundStatus.style.color = '#00cb00';
     } else if (roundResult.winner === 'computer') {
       computerScore++;
       roundScore++;
-      roundStatus.innerHTML = `<span style="font-size: 20px"><strong>You lost round ${
+      roundStatus.innerHTML = `<span style="color: #EE3224; font-size: 20px;"><strong>You lost round ${
         roundScore - 1
       }</strong></span><br><strong>${
         playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
       }</strong> loses to <strong>${computerSelection}</strong>. Damn machines!`;
-      roundStatus.style.color = '#EE3224';
     } else if (roundResult.winner === null) {
-      roundStatus.innerHTML = `<span style="font-size: 20px"><strong>It's a tie</strong></span><br>Both you and the machines picked <strong>${playerSelection}</strong>. Replay round <strong>${roundScore}</strong>.`;
-      roundStatus.style.color = '#83C5BE';
+      roundStatus.innerHTML = `<span style="color: cadetblue; font-size: 20px;"><strong>It's a tie</strong></span><br>Both you and the machines picked <strong>${playerSelection}</strong>. Replay round <strong>${roundScore}</strong>.`;
     }
 
     let bestOfText = document.createElement('p');
