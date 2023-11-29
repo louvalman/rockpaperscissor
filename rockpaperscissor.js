@@ -59,26 +59,26 @@ let getComputerChoice = () => {
 // defines playRound function (core mechanics of game) used when player clicks on their selection for each round
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === 'rock' && computerSelection === 'paper') {
-    return { result: 'You lose! Paper beats Rock.', winner: 'computer' };
+    return { winner: 'computer' };
   } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-    return { result: 'You win! Rock beats scissors.', winner: 'player' };
+    return { winner: 'player' };
   } else if (playerSelection === 'rock' && computerSelection === 'rock') {
-    return { result: 'It is a tie!', winner: null };
+    return { winner: null };
   } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-    return { result: 'You win! Paper beats rock.', winner: 'player' };
+    return { winner: 'player' };
   } else if (playerSelection === 'paper' && computerSelection === 'paper') {
-    return { result: 'It is a tie!', winner: null };
+    return { winner: null };
   } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-    return { result: 'You lose! scissors beats paper.', winner: 'computer' };
+    return { winner: 'computer' };
   } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-    return { result: 'You lose! Rock beats scissors.', winner: 'computer' };
+    return { winner: 'computer' };
   } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-    return { result: 'You win! scissors beats paper', winner: 'player' };
+    return { winner: 'player' };
   } else if (
     playerSelection === 'scissors' &&
     computerSelection === 'scissors'
   ) {
-    return { result: 'It is a tie!', winner: null };
+    return { winner: null };
   }
 }
 
