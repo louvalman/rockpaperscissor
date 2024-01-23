@@ -59,26 +59,26 @@ let getComputerChoice = () => {
 // defines playRound function (core mechanics of game) used when player clicks on their selection for each round
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === 'rock' && computerSelection === 'paper') {
-    return { result: 'You lose! Paper beats Rock.', winner: 'computer' };
+    return { winner: 'computer' };
   } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-    return { result: 'You win! Rock beats scissors.', winner: 'player' };
+    return { winner: 'player' };
   } else if (playerSelection === 'rock' && computerSelection === 'rock') {
-    return { result: 'It is a tie!', winner: null };
+    return { winner: null };
   } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-    return { result: 'You win! Paper beats rock.', winner: 'player' };
+    return { winner: 'player' };
   } else if (playerSelection === 'paper' && computerSelection === 'paper') {
-    return { result: 'It is a tie!', winner: null };
+    return { winner: null };
   } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-    return { result: 'You lose! scissors beats paper.', winner: 'computer' };
+    return { winner: 'computer' };
   } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-    return { result: 'You lose! Rock beats scissors.', winner: 'computer' };
+    return { winner: 'computer' };
   } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-    return { result: 'You win! scissors beats paper', winner: 'player' };
+    return { winner: 'player' };
   } else if (
     playerSelection === 'scissors' &&
     computerSelection === 'scissors'
   ) {
-    return { result: 'It is a tie!', winner: null };
+    return { winner: null };
   }
 }
 
@@ -134,27 +134,23 @@ selectionButtons.forEach((button) => {
     const roundResult = playRound(playerSelection, computerSelection);
 
     if (roundResult.winner === 'player') {
-      // calculate the winner by incrementing the player's or computer's score by looking at the winner variable defined in the playRound function
       playerScore++;
       roundScore++;
-      roundStatus.innerHTML = `<span style="font-size: 20px"><strong>You won round ${
+      roundStatus.innerHTML = `<span style="color: #00cb00; font-size: 20px;"><strong>You won round ${
         roundScore - 1
       }</strong></span><br><strong>${
         playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
       }</strong> beats <strong>${computerSelection}</strong>. Hope is restored!`;
-      roundStatus.style.color = '#00cb00';
     } else if (roundResult.winner === 'computer') {
       computerScore++;
       roundScore++;
-      roundStatus.innerHTML = `<span style="font-size: 20px"><strong>You lost round ${
+      roundStatus.innerHTML = `<span style="color: #EE3224; font-size: 20px;"><strong>You lost round ${
         roundScore - 1
       }</strong></span><br><strong>${
         playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
       }</strong> loses to <strong>${computerSelection}</strong>. Damn machines!`;
-      roundStatus.style.color = '#EE3224';
     } else if (roundResult.winner === null) {
-      roundStatus.innerHTML = `<span style="font-size: 20px"><strong>It's a tie</strong></span><br>Both you and the machines picked <strong>${playerSelection}</strong>. Replay round <strong>${roundScore}</strong>.`;
-      roundStatus.style.color = '#83C5BE';
+      roundStatus.innerHTML = `<span style="color: cadetblue; font-size: 20px;"><strong>It's a tie</strong></span><br>Both you and the machines picked <strong>${playerSelection}</strong>. Replay round <strong>${roundScore}</strong>.`;
     }
 
     let bestOfText = document.createElement('p');
